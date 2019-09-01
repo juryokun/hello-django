@@ -1,5 +1,5 @@
 # Ignore cache directory
 __pycache__/
-./static/
+/static/
 .secrets.md
 uwsgi.log

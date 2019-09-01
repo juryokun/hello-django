@@ -43,3 +43,14 @@ docker-compose exec django python3 manage.py collectstatic
 
 - http://localhost:8000
 - http://localhost:8000/admin
+
+## Git ignore
+
+```
+# Ignore changes
+git update-index --skip-worktree docker-build/docker-compose.yml src/pr_django/settings.py
+
+# Not-Ignore changes
+git update-index --no-skip-worktree docker-build/docker-compose.yml src/pr_django/settings.py
+```
+

@@ -1,0 +1,41 @@
+version: "3"
+services:
+  nginx:
+    build: ./nginx
+    container_name: django_dev_nginx
+    volumes:
+      - ../static:/static
+    ports:
+      - 8000:8000
+    depends_on:
+      - django
+
+  django:
+    build: ./django
+    container_name: django_dev
+    command: uwsgi --ini /code/pr_django/django.ini
+    volumes:
+      - ../src:/code
+      - ../static:/static
+    expose:
+      - 80
+    ports:
+      - 8080:80
+    depends_on:
+      - postgres
+
+  postgres:
+    image: mdillon/postgis:11-alpine
+    container_name: postgre_container
+    environment:
+      POSTGRES_DB:       %%%%     # Change!
+      POSTGRES_USER:     %%%%     # Change!
+      POSTGRES_PASSWORD: %%%%     # Change!
+    volumes:
+      - pgisData:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+
+volumes:
+  pgisData:
+    external: true

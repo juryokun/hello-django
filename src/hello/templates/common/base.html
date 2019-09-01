@@ -1,0 +1,16 @@
+{% load static %}
+<!doctype html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    {% block title_block %}
+    {% endblock %}
+    <link rel="stylesheet" type="text/css" href="{% static 'common/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'common/css/bootstrap-grid.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'common/css/bootstrap-reboot.min.css' %}">
+    {% block extra_css_block %}
+    {% endblock %}
+</head>
+{% block body_block %}
+{% endblock %}
+</html>
